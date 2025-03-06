@@ -5,6 +5,7 @@ import Button from '../components/shared/Button.jsx'
 import { useRouter } from 'expo-router'
 import SignUp from './(auth)/SignUp.jsx'
 
+
 export default function LandingScreen() {
 
   const router = useRouter();
