@@ -1,4 +1,4 @@
-import { View, Text, Pressable, TouchableOpacity } from 'react-native'
+import { View, Text, Pressable, TouchableOpacity, TextInput } from 'react-native'
 import React from 'react'
 import { Image } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -30,6 +30,11 @@ export default function SignUp() {
     }
   };
 
+  const fullNameFunction = () => {
+    console.log("The text inside is: ",fullName )
+    // return console.log(fullName)
+  }
+
   return (
     <View className="w-full h-full
     flex items-center 
@@ -54,15 +59,27 @@ export default function SignUp() {
         <FontAwesome className="absolute bottom-0 right-0" name="camera" size={25} color="#2a9d8f" />
       </TouchableOpacity>
 
-      <TextInputField label="Full name" isPass={false} onChange={(v)=>setFullName(v)} />
+      {/* <TextInputField label="Full name" isPass={false} onChange={(v)=>setFullName(v)} />
       <TextInputField label="Email Address" isPass={false} onChange={(v)=>setEmail(v)} />
-      <TextInputField label="Password" isPass={true} onChange={(v)=>setPassword(v)} />
+      <TextInputField label="Password" isPass={true} onChange={(v)=>setPassword(v)} /> */}
+      
+      <TextInput 
+      className="border-2 border-black w-[90%] rounded-md p-3 text-2xl"
+      placeholder='Enter your text here...'
+      onChangeText={user=>setFullName(user)}
+      />
 
       <Button 
       BtnName="Submit" 
       round={10} 
-      click={()=>console.log()} 
+      onPress={fullNameFunction()} 
       width="90%" />
+
+      <TouchableOpacity
+      onPress={()=>fullNameFunction()}
+      className="w-[90%] flex items-center justify-center bg-gray-700 rounded-lg">
+        <Text className="font-bold text-white text-center my-5 text-2xl">Submit</Text>
+      </TouchableOpacity>
     </View>
   )
 }
